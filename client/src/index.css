@@ -1,0 +1,350 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
+@import "tailwindcss";
+
+/* ══════════════════════════════════════════════
+   NOVACART — Design System Tokens
+   ══════════════════════════════════════════════ */
+@theme {
+  /* Brand Orange */
+  --color-brand-50: #FFF7F0;
+  --color-brand-100: #FFEDD5;
+  --color-brand-200: #FED7AA;
+  --color-brand-300: #FDBA74;
+  --color-brand-400: #FB923C;
+  --color-brand-500: #FF6B35;
+  --color-brand-600: #EA580C;
+  --color-brand-700: #C2410C;
+  --color-brand-800: #9A3412;
+  --color-brand-900: #7C2D12;
+
+  /* Navy (trust / premium feel) */
+  --color-navy-50: #EEF0F6;
+  --color-navy-100: #D0D4E4;
+  --color-navy-200: #A1A9C9;
+  --color-navy-300: #727EAE;
+  --color-navy-400: #4A5789;
+  --color-navy-500: #2D3561;
+  --color-navy-600: #232A4F;
+  --color-navy-700: #1A1F3D;
+  --color-navy-800: #13162E;
+  --color-navy-900: #0F0F1A;
+
+  /* Keep primary mapped to brand for backwards compat */
+  --color-primary-50: #FFF7F0;
+  --color-primary-100: #FFEDD5;
+  --color-primary-200: #FED7AA;
+  --color-primary-300: #FDBA74;
+  --color-primary-400: #FB923C;
+  --color-primary-500: #FF6B35;
+  --color-primary-600: #EA580C;
+  --color-primary-700: #C2410C;
+  --color-primary-800: #9A3412;
+  --color-primary-900: #7C2D12;
+
+  /* Surfaces */
+  --color-surface-light: #FAFAFA;
+  --color-surface-dark: #0F0F1A;
+
+  /* Fonts */
+  --font-display: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+}
+
+/* ══════════════════════════════════════════════
+   BASE LAYER
+   ══════════════════════════════════════════════ */
+@layer base {
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    font-family: var(--font-body);
+    color: #111827;
+    background: #FAFAFA;
+  }
+
+  .dark body {
+    background: #0F0F1A;
+    color: #f3f4f6;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+  }
+}
+
+/* ══════════════════════════════════════════════
+   COMPONENT CLASSES (plain CSS — no @apply)
+   ══════════════════════════════════════════════ */
+
+/* Glass morphism */
+.glass {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(229, 231, 235, 0.6);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+.dark .glass {
+  background: rgba(15, 15, 26, 0.8);
+  border-color: rgba(26, 31, 61, 0.5);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  border-radius: 1rem;
+}
+.dark .glass-card {
+  background: rgba(19, 22, 46, 0.8);
+  border-color: rgba(26, 31, 61, 0.5);
+}
+
+/* Text gradient */
+.text-gradient {
+  background: linear-gradient(to right, #FF6B35, #FB923C);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Section title */
+.section-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: #111827;
+  letter-spacing: -0.01em;
+}
+.dark .section-title {
+  color: #fff;
+}
+
+/* Marketplace badge */
+.nova-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-radius: 4px;
+  line-height: 1.4;
+}
+
+/* CTA Buttons */
+.nova-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  border-radius: 0.5rem;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+.nova-btn:active {
+  transform: scale(0.97);
+}
+.nova-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  border-radius: 0.5rem;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  border: none;
+  background: #FF6B35;
+  color: white;
+  box-shadow: 0 4px 12px rgba(255, 107, 53, 0.2);
+}
+.nova-btn-primary:hover {
+  background: #EA580C;
+  box-shadow: 0 6px 16px rgba(255, 107, 53, 0.3);
+}
+.nova-btn-primary:active {
+  transform: scale(0.97);
+}
+
+.nova-btn-navy {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  border-radius: 0.5rem;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  border: none;
+  background: #13162E;
+  color: white;
+}
+.nova-btn-navy:hover {
+  background: #1A1F3D;
+}
+.nova-btn-navy:active {
+  transform: scale(0.97);
+}
+.dark .nova-btn-navy {
+  background: white;
+  color: #0F0F1A;
+}
+.dark .nova-btn-navy:hover {
+  background: #f3f4f6;
+}
+
+.nova-btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  border-radius: 0.5rem;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  border: 1px solid #d1d5db;
+  background: white;
+  color: #374151;
+}
+.nova-btn-outline:hover {
+  border-color: #FB923C;
+  color: #EA580C;
+}
+.nova-btn-outline:active {
+  transform: scale(0.97);
+}
+
+/* Product card */
+.nova-card {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+.nova-card:hover {
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  transform: translateY(-2px);
+}
+.dark .nova-card {
+  background: #13162E;
+  border-color: #1A1F3D;
+}
+.dark .nova-card:hover {
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+/* Scrollbar hide */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* No scrollbar for horizontal scrolls */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* ══════════════════════════════════════════════
+   ANIMATIONS
+   ══════════════════════════════════════════════ */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+@keyframes badge-pop {
+  0% { transform: scale(0.5); opacity: 0; }
+  70% { transform: scale(1.15); }
+  100% { transform: scale(1); opacity: 1; }
+}
+@keyframes cart-shake {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-8deg); }
+  75% { transform: rotate(8deg); }
+}
+@keyframes countdown-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+@keyframes float-gentle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+.dark .animate-shimmer {
+  background: linear-gradient(90deg, #1e293b 25%, #334155 50%, #1e293b 75%);
+  background-size: 200% 100%;
+}
+.animate-badge-pop {
+  animation: badge-pop 0.3s ease-out;
+}
+.animate-cart-shake {
+  animation: cart-shake 0.4s ease-in-out;
+}
+.animate-countdown {
+  animation: countdown-pulse 1s ease-in-out infinite;
+}
+.animate-float {
+  animation: float-gentle 3s ease-in-out infinite;
+}
+
+/* ══════════════════════════════════════════════
+   INPUT OVERRIDES
+   ══════════════════════════════════════════════ */
+
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 4px;
+  border-radius: 999px;
+  background: #e2e8f0;
+  outline: none;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #FF6B35;
+  cursor: pointer;
+  border: 2px solid white;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+}
