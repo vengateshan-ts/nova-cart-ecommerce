@@ -17,21 +17,23 @@ services:
       - key: JWT_SECRET
         generateValue: true
       - key: FRONTEND_URL
-        fromStaticSite:
+        fromService:
+          type: web
           name: novacart-client
           property: url
 
-static_sites:
   # Frontend Client (React/Vite)
-  - name: novacart-client
+  - type: web
+    name: novacart-client
+    runtime: static
     plan: free
     rootDir: client
     buildCommand: npm install && npm run build
-    publishDir: dist
+    staticPublishPath: ./dist
     envVars:
       - key: VITE_API_URL
         fromService:
-          name: novacart-server
           type: web
+          name: novacart-server
           property: url
           suffix: /api
