@@ -1,0 +1,9 @@
+[build]
+builder = "NIXPACKS"
+root = "server"
+
+[deploy]
+startCommand = "node server.js"
+healthcheckPath = "/"
+healthcheckTimeout = 100
+restartPolicy = "on-failure"
