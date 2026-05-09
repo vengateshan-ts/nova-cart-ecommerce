@@ -1,5 +1,5 @@
 services:
-  # Backend Server (Node.js)
+  # Backend Server
   - type: web
     name: novacart-server
     runtime: node
@@ -13,16 +13,13 @@ services:
       - key: PORT
         value: 5000
       - key: MONGO_URI
-        sync: false
+        sync: false # Enter your MongoDB string in Render UI
       - key: JWT_SECRET
         generateValue: true
       - key: FRONTEND_URL
-        fromService:
-          type: web
-          name: novacart-client
-          property: url
+        value: "*" # Allows connections from anywhere for now
 
-  # Frontend Client (React/Vite)
+  # Frontend Client
   - type: web
     name: novacart-client
     runtime: static
@@ -32,8 +29,4 @@ services:
     staticPublishPath: ./dist
     envVars:
       - key: VITE_API_URL
-        fromService:
-          type: web
-          name: novacart-server
-          property: url
-          suffix: /api
+        sync: false # You will paste your Render Server URL here (e.g. https://...onrender.com/api)
